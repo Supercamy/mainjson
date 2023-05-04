@@ -5,7 +5,9 @@ import Layout from '../components/Layout';
 export default function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <div className='container mx-auto mt-8'>
+        <Component {...pageProps} />
+      </div>
     </Layout>
   );
 }
