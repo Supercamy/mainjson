@@ -2,11 +2,12 @@ import fs from 'fs';
 import path from 'path';
 
 function MyPage({ data }) {
+
+  console.log(data)
   return (
     <div>
-      <h1>{data.record.name}</h1>
-      <p>ID: {data.record.id}</p>
-      <p>UID: {data.record.uid}</p>
+      {/* <h1>{data.record.name}</h1> */}
+
       {/* <p>Language: {data.record.language}</p> */}
     </div>
   );
@@ -14,7 +15,7 @@ function MyPage({ data }) {
 
 export async function getStaticProps() {
   try {
-    const filePath = path.join(process.cwd(), 'json', 'data.json');
+    const filePath = path.join(process.cwd(), 'json', 'project_js.json');
     const fileData = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(fileData);
 
