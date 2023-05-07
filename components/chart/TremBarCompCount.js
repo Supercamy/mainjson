@@ -5,50 +5,36 @@ import { BarList, Card, Title, Bold, Flex, Text } from '@tremor/react';
 function prepareTremBarData(data) {
   const stagesMap = data.reduce((acc, project) => {
     const stage = project.PROJECT_STAGE;
-    const budget = parseFloat(project.ORIGINAL_TOT_BUDGET) || 0;
 
     if (!acc[stage]) {
       acc[stage] = { name: stage, value: 0 };
     }
 
-    acc[stage].value += budget;
+    acc[stage].value += 1;
     return acc;
   }, {});
 
   return Object.values(stagesMap).sort((a, b) => b.value - a.value);
 }
 
-const TremBarComp = () => {
+const TremBarCompCount = () => {
   const tremgg = prepareTremBarData(jsonData);
-
-  const formatValue = (value) => {
-    if (value >= 1000000) {
-      return `${(value / 1000000).toFixed(0)}M`;
-    } else if (value >= 1000) {
-      return `${(value / 1000).toFixed(0)}K`;
-    } else {
-      return value.toLocaleString(undefined, {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      });
-    }
-  };
 
   const formattedData = tremgg.map((item) => ({
     ...item,
-    label: formatValue(item.value),
-    value: parseFloat(item.value.toFixed(0)),
+    label: item.name,
+    value: item.value,
   }));
 
   return (
     <Card className='max-w-lg'>
-      <Title>Website Analytics</Title>
+      <Title>Project Count by Stage</Title>
       <Flex className='mt-4'>
         <Text>
-          <Bold>Source</Bold>
+          <Bold>Stage</Bold>
         </Text>
         <Text>
-          <Bold>Visits</Bold>
+          <Bold>Count</Bold>
         </Text>
       </Flex>
       <BarList data={formattedData} className='mt-2' />
@@ -56,4 +42,4 @@ const TremBarComp = () => {
   );
 };
 
-export default TremBarComp;
+export default TremBarCompCount;

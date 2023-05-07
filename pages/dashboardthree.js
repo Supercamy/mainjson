@@ -3,6 +3,7 @@ import Card from '@/components/maindash/Card';
 import Charttest from '@/components/chart/charttest';
 import Tremcard from '@/components/tremor/Tremcard';
 import TremBarComp from '@/components/chart/TremBarComp';
+import TremBarCompCount from '@/components/chart/TremBarCompCount';
 
 const dashboardthree = () => {
   return (
@@ -12,7 +13,7 @@ const dashboardthree = () => {
         <Card />
       </div>
       <div className=' xl:col-span-3  row-span-6'>
-        <TremBarComp />
+        <TremBarCompCount />
       </div>
       <div className=' xl:col-span-3  row-span-6'>
         <Tremcard />
