@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '@/components/maindash/Card';
 import Charttest from '@/components/chart/charttest';
 import Tremcard from '@/components/tremor/Tremcard';
+import TremBarComp from '@/components/chart/TremBarComp';
 
 const dashboardthree = () => {
   return (
@@ -11,7 +12,7 @@ const dashboardthree = () => {
         <Card />
       </div>
       <div className=' xl:col-span-3  row-span-6'>
-        <Charttest />
+        <TremBarComp />
       </div>
       <div className=' xl:col-span-3  row-span-6'>
         <Tremcard />
